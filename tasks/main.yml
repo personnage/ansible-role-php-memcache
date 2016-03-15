@@ -1,0 +1,17 @@
+---
+- name: Install PHP Memcache extension (RedHat).
+  yum:
+    name: php-pecl-memcache
+    state: installed
+    enablerepo: "{{ php_enablerepo }}"
+  notify:
+    - restart webserver
+    - restart php-fpm
+  when: ansible_os_family == 'RedHat'
+
+- name: Install PHP Memcache extension (Debian).
+  apt: name=php5-memcache state=installed
+  notify:
+    - restart webserver
+    - restart php-fpm
+  when: ansible_os_family == 'Debian'
