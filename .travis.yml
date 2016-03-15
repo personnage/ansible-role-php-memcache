@@ -8,7 +8,6 @@ env:
 
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -y memcached
 
 install:
   # Install Ansible.
@@ -18,7 +17,7 @@ install:
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
 
   # Install dependencies.
-  - ansible-galaxy install personnage.php
+  - ansible-galaxy install personnage.php geerlingguy.memcached
 
 script:
   # Check the role/playbook's syntax.
@@ -34,7 +33,7 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-  # Run script to test if Memcached is available and working.
+  # Run script to test if Memcache is available and working.
   - php tests/test-memcache.php
 
 notifications:

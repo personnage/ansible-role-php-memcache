@@ -7,4 +7,5 @@
 
   roles:
     - personnage.php
+    - geerlingguy.memcached
     - ansible-role-php-memcache
