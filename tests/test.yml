@@ -6,5 +6,5 @@
     php_enable_webserver: false
 
   roles:
-    - geerlingguy.php
+    - personnage.php
     - ansible-role-php-memcache
